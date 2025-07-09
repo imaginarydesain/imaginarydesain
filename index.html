@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Imaginarydesain</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     :root {
       --warna-hijau: #1c5d4c;
@@ -22,7 +23,7 @@
     }
     header {
       background-color: var(--warna-hitam);
-      padding: 20px 40px;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -30,33 +31,30 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      flex-wrap: wrap;
     }
     .logo-container {
       display: flex;
       align-items: center;
     }
     .logo-container img {
-      height: 60px;
-      margin-right: 15px;
+      height: 40px;
+      margin-right: 10px;
     }
     header h1 {
       color: var(--warna-emas);
       margin: 0;
       font-weight: 700;
-      font-size: 1.5em;
+      font-size: 1.1em;
     }
     nav {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 10px;
+      gap: 12px;
     }
     nav a {
-      margin: 8px 15px;
       text-decoration: none;
       color: #ccc;
       font-weight: 500;
+      font-size: 1em;
       transition: color 0.3s;
     }
     nav a:hover {
@@ -65,6 +63,7 @@
     .hero {
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
         url('Tampak Depan Ruko rev.2a.jpg') center/cover no-repeat;
+      position: relative;
       height: 80vh;
       color: white;
       display: flex;
@@ -72,6 +71,16 @@
       justify-content: center;
       text-align: center;
       padding: 0 20px;
+      overflow: hidden;
+    }
+    canvas#smoke {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
     }
     .hero h2 {
       font-size: 2.5em;
@@ -80,6 +89,8 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
     .section {
       padding: 60px 20px;
@@ -153,54 +164,17 @@
       background-color: #1a1a1a;
     }
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .logo-container {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-      .logo-container img {
-        margin: 0 0 10px 0;
-      }
       header h1 {
-        font-size: 1.2em;
-      }
-      nav {
-        flex-direction: column;
-        align-items: center;
+        font-size: 0.95em;
       }
       nav a {
-        margin: 6px 0;
+        font-size: 1.4em;
       }
-      .hero {
-        height: auto;
-        padding: 40px 20px;
-      }
-      .hero h2 {
-        font-size: 1.3em;
-        padding: 15px;
-      }
-      .section {
-        padding: 30px 10px;
-      }
-      .section h3 {
-        font-size: 1.5em;
-      }
-      .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 15px;
-      }
-      .gallery img {
-        height: 150px;
-      }
-      .contact p {
-        font-size: 1em;
-        padding: 0 10px;
+      nav a::after {
+        content: attr(title);
+        display: block;
+        font-size: 0.6em;
+        color: #888;
       }
     }
   </style>
@@ -212,12 +186,13 @@
       <h1>Imaginarydesain</h1>
     </div>
     <nav>
-      <a href="#portofolio">Gallery</a>
-      <a href="#kontak">Kontak</a>
+      <a href="#portofolio" title="Gallery"><i class="bi bi-grid"></i></a>
+      <a href="#kontak" title="Kontak"><i class="bi bi-envelope"></i></a>
     </nav>
   </header>
 
   <section class="hero">
+    <canvas id="smoke"></canvas>
     <h2>Mewujudkan Ruang Impian Anda, dari Konsep Hingga Visualisasi Nyata</h2>
   </section>
 
@@ -249,5 +224,52 @@
   <footer>
     &copy; 2025 Imaginarydesain. All rights reserved.
   </footer>
+
+  <script>
+    const canvas = document.getElementById("smoke");
+    const ctx = canvas.getContext("2d");
+    let w, h;
+    let particles = [];
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = document.querySelector(".hero").offsetHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    function createParticle(x, y) {
+      return {
+        x,
+        y,
+        radius: Math.random() * 20 + 10,
+        alpha: Math.random() * 0.3 + 0.1,
+        dx: (Math.random() - 0.5) * 1.2,
+        dy: Math.random() * -1.2 - 0.5,
+      };
+    }
+
+    canvas.addEventListener("mousemove", (e) => {
+      for (let i = 0; i < 3; i++) {
+        particles.push(createParticle(e.offsetX, e.offsetY));
+      }
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach((p, i) => {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(212,175,55,${p.alpha})`;
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        p.alpha -= 0.004;
+        if (p.alpha <= 0) particles.splice(i, 1);
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
 </body>
 </html>
