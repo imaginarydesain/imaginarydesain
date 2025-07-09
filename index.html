@@ -21,6 +21,22 @@
       background-color: var(--warna-hitam);
       color: #eee;
     }
+    body > *:not(canvas#smoke) {
+      position: relative;
+      z-index: 1;
+    }
+    canvas#smoke {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.3;
+      filter: blur(10px);
+    }
     header {
       background-color: var(--warna-hitam);
       padding: 15px 20px;
@@ -73,15 +89,6 @@
       padding: 0 20px;
       overflow: hidden;
     }
-    canvas#smoke {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
     .hero h2 {
       font-size: 2.5em;
       max-width: 800px;
@@ -89,8 +96,6 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 2;
     }
     .section {
       padding: 60px 20px;
@@ -180,19 +185,19 @@
   </style>
 </head>
 <body>
+  <canvas id="smoke"></canvas>
   <header>
     <div class="logo-container">
       <img src="Imaginary 1.png" alt="Logo Imaginary">
       <h1>Imaginarydesain</h1>
     </div>
     <nav>
-      <a href="#portofolio" title="Gallery"><i class="bi bi-grid"></i></a>
+      <a href="#portofolio" title="Katalog"><i class="bi bi-grid"></i></a>
       <a href="#kontak" title="Kontak"><i class="bi bi-envelope"></i></a>
     </nav>
   </header>
 
   <section class="hero">
-    <canvas id="smoke"></canvas>
     <h2>Mewujudkan Ruang Impian Anda, dari Konsep Hingga Visualisasi Nyata</h2>
   </section>
 
@@ -230,30 +235,36 @@
     const ctx = canvas.getContext("2d");
     let w, h;
     let particles = [];
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
     function resize() {
       w = canvas.width = window.innerWidth;
-      h = canvas.height = document.querySelector(".hero").offsetHeight;
+      h = canvas.height = window.innerHeight;
     }
     window.addEventListener("resize", resize);
     resize();
 
-    function createParticle(x, y) {
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    function createParticle() {
       return {
-        x,
-        y,
-        radius: Math.random() * 20 + 10,
-        alpha: Math.random() * 0.3 + 0.1,
-        dx: (Math.random() - 0.5) * 1.2,
-        dy: Math.random() * -1.2 - 0.5,
+        x: mouse.x + (Math.random() - 0.5) * 60,
+        y: mouse.y + 20,
+        radius: Math.random() * 30 + 20,
+        alpha: Math.random() * 0.1 + 0.05,
+        dx: (Math.random() - 0.5) * 1,
+        dy: Math.random() * -0.5 - 0.2,
       };
     }
 
-    canvas.addEventListener("mousemove", (e) => {
-      for (let i = 0; i < 3; i++) {
-        particles.push(createParticle(e.offsetX, e.offsetY));
+    setInterval(() => {
+      for (let i = 0; i < 2; i++) {
+        particles.push(createParticle());
       }
-    });
+    }, 150);
 
     function draw() {
       ctx.clearRect(0, 0, w, h);
@@ -264,7 +275,7 @@
         ctx.fill();
         p.x += p.dx;
         p.y += p.dy;
-        p.alpha -= 0.004;
+        p.alpha -= 0.002;
         if (p.alpha <= 0) particles.splice(i, 1);
       });
       requestAnimationFrame(draw);
