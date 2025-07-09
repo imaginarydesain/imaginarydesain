@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imaginarydesain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --warna-hijau: #1c5d4c;
+      --warna-emas: #d4af37;
+      --warna-hitam: #121212;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--warna-hitam);
+      color: #eee;
+    }
+    header {
+      background-color: var(--warna-hitam);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      height: 45px;
+      margin-right: 15px;
+    }
+    header h1 {
+      color: var(--warna-emas);
+      margin: 0;
+      font-weight: 700;
+    }
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--warna-emas);
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat;
+      height: 80vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .hero h2 {
+      font-size: 3em;
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .section {
+      padding: 70px 40px;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+    .section h3 {
+      color: var(--warna-emas);
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(212,175,55,0.4);
+    }
+    .contact {
+      background-color: var(--warna-hijau);
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+    .contact h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: var(--warna-emas);
+    }
+    .contact p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+      font-size: 1.1em;
+    }
+    .contact a {
+      background-color: var(--warna-emas);
+      color: #121212;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 30px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .contact a:hover {
+      background-color: #f7d75b;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #999;
+      padding: 25px;
+      background-color: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="Imaginary 1.png" alt="Logo Imaginary">
+      <h1>Imaginarydesain</h1>
+    </div>
+    <nav>
+      <a href="#portofolio">Portofolio</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Mewujudkan Ruang Impian Anda, dari Konsep Hingga Visualisasi Nyata</h2>
+  </section>
+
+  <section id="portofolio" class="section">
+    <h3>Portofolio</h3>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" alt="Proyek 1">
+      <img src="https://images.unsplash.com/photo-1599423300746-b62533397364" alt="Proyek 2">
+      <img src="https://images.unsplash.com/photo-1600585152931-07c98a67b3e6" alt="Proyek 3">
+      <img src="https://images.unsplash.com/photo-1505692794403-55b55f1d6b42" alt="Proyek 4">
+    </div>
+  </section>
+
+  <section id="kontak" class="contact">
+    <h3>Hubungi Kami</h3>
+    <p>Kami hadir untuk membantu Anda merancang hunian atau bangunan komersial yang tidak hanya indah secara visual, tetapi juga fungsional dan efisien secara teknis.<br>
+    Mulai dari desain arsitektur 2D, visualisasi 3D lengkap dengan video, hingga estimasi biaya bangunan dan renovasi — semua kami kerjakan dengan presisi dan dedikasi.</p>
+    <a href="https://wa.me/6281233406743" target="_blank">Hubungi via WhatsApp</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Imaginarydesain. All rights reserved.
+  </footer>
+</body>
+</html>
