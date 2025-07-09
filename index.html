@@ -11,6 +11,9 @@
       --warna-emas: #d4af37;
       --warna-hitam: #121212;
     }
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -27,22 +30,30 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      flex-wrap: wrap;
     }
     .logo-container {
       display: flex;
       align-items: center;
     }
     .logo-container img {
-      height: 110px;
-      margin-right: 20px;
+      height: 60px;
+      margin-right: 15px;
     }
     header h1 {
       color: var(--warna-emas);
       margin: 0;
       font-weight: 700;
+      font-size: 1.5em;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
     }
     nav a {
-      margin-left: 25px;
+      margin: 8px 15px;
       text-decoration: none;
       color: #ccc;
       font-weight: 500;
@@ -63,15 +74,15 @@
       padding: 0 20px;
     }
     .hero h2 {
-      font-size: 3em;
+      font-size: 2.5em;
       max-width: 800px;
       background: rgba(0, 0, 0, 0.6);
-      padding: 25px;
+      padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     .section {
-      padding: 70px 40px;
+      padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
       text-align: center;
@@ -86,23 +97,28 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
     }
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+    .gallery a {
+      display: block;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
-    .gallery img:hover {
+    .gallery a:hover {
       transform: scale(1.03);
       box-shadow: 0 6px 16px rgba(212,175,55,0.4);
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
     }
     .contact {
       background-color: var(--warna-hijau);
       color: white;
       text-align: center;
-      padding: 70px 20px;
+      padding: 60px 20px;
     }
     .contact h3 {
       font-size: 2em;
@@ -136,8 +152,7 @@
       padding: 25px;
       background-color: #1a1a1a;
     }
-    
-     @media (max-width: 768px) {
+    @media (max-width: 768px) {
       header {
         flex-direction: column;
         align-items: center;
@@ -188,39 +203,6 @@
         padding: 0 10px;
       }
     }
-      .logo-container {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-      .logo-container img {
-        margin: 0 0 10px 0;
-      }
-      header h1 {
-        font-size: 1.2em;
-      }
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav a {
-        margin: 6px 0;
-      }
-      .hero {
-        height: auto;
-        padding: 40px 20px;
-      }
-      .hero h2 {
-        font-size: 1.6em;
-      }
-      .section {
-        padding: 40px 15px;
-      }
-      .section h3 {
-        font-size: 1.5em;
-      }
-    }
   </style>
 </head>
 <body>
@@ -243,10 +225,18 @@
   <section id="portofolio" class="section">
     <h3>Gallery</h3>
     <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" alt="Proyek 1">
-      <img src="https://images.unsplash.com/photo-1599423300746-b62533397364" alt="Proyek 2">
-      <img src="https://images.unsplash.com/photo-1600585152931-07c98a67b3e6" alt="Proyek 3">
-      <img src="https://images.unsplash.com/photo-1505692794403-55b55f1d6b42" alt="Proyek 4">
+      <a href="proyek1.html">
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" alt="Proyek 1">
+      </a>
+      <a href="proyek2.html">
+        <img src="https://images.unsplash.com/photo-1599423300746-b62533397364" alt="Proyek 2">
+      </a>
+      <a href="proyek3.html">
+        <img src="https://images.unsplash.com/photo-1600585152931-07c98a67b3e6" alt="Proyek 3">
+      </a>
+      <a href="proyek4.html">
+        <img src="https://images.unsplash.com/photo-1505692794403-55b55f1d6b42" alt="Proyek 4">
+      </a>
     </div>
   </section>
 
