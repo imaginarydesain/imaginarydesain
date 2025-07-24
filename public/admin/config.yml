@@ -16,7 +16,7 @@ collections:
     files:
       - label: "Homepage Content"
         name: "homepage_content"
-        file: "src/content/homepage.md"
+        file: "public/content/homepage.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
