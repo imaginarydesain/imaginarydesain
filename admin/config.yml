@@ -1,10 +1,14 @@
 backend:
-  name: github
-  repo: imaginarydesain/imaginarydesain
+  name: git-gateway
   branch: main
 
 media_folder: "uploads"
 public_folder: "/uploads"
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
 
 collections:
   - name: "proyek"
