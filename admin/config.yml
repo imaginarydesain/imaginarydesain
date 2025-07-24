@@ -3,8 +3,12 @@ backend:
   repo: imaginarydesain/imaginarydesain
   branch: main
 
+site_url: https://imaginarydesain.netlify.app
+
 media_folder: "public/img/uploads"
 public_folder: "/img/uploads"
+
+publish_mode: editorial_workflow
 
 collections:
   - name: "homepage"
