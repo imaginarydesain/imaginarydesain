@@ -3,7 +3,7 @@ backend:
   repo: imaginarydesain/imaginarydesain
   branch: main
 
-site_url: https://imaginarydesain.netlify.app
+site_url: https://github.com/imaginarydesain/imaginarydesain
 
 media_folder: "public/img/uploads"
 public_folder: "/img/uploads"
