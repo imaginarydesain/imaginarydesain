@@ -1,22 +1,10 @@
-backend:
-  name: github
-  repo: imaginarydesain/imaginarydesain
-  branch: main
-
-site_url: https://imaginarydesain.netlify.app
-
-media_folder: "public/img/uploads"
-public_folder: "/img/uploads"
-
-publish_mode: editorial_workflow
-
 collections:
   - name: "homepage"
     label: "Homepage"
     files:
       - label: "Homepage Content"
         name: "homepage_content"
-        file: "public/content/homepage.md"
+        file: "src/content/homepage.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
