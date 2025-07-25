@@ -1,286 +1,226 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imaginarydesain</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    :root {
-      --warna-hijau: #1c5d4c;
-      --warna-emas: #d4af37;
-      --warna-hitam: #121212;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--warna-hitam);
-      color: #eee;
-    }
-    body > *:not(canvas#smoke) {
-      position: relative;
-      z-index: 1;
-    }
-    canvas#smoke {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      opacity: 0.3;
-      filter: blur(10px);
-    }
-    header {
-      background-color: var(--warna-hitam);
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #333;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-    }
-    .logo-container img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    header h1 {
-      color: var(--warna-emas);
-      margin: 0;
-      font-weight: 700;
-      font-size: 1.1em;
-    }
-    nav {
-      display: flex;
-      gap: 12px;
-    }
-    nav a {
-      text-decoration: none;
-      color: #ccc;
-      font-weight: 500;
-      font-size: 1em;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: var(--warna-emas);
-    }
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-        url('Tampak Depan Ruko rev.2a.jpg') center/cover no-repeat;
-      position: relative;
-      height: 80vh;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-      overflow: hidden;
-    }
-    .hero h2 {
-      font-size: 2.5em;
-      max-width: 800px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-      text-align: center;
-    }
-    .section h3 {
-      color: var(--warna-emas);
-      font-size: 2em;
-      margin-bottom: 30px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-    .gallery a {
-      display: block;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    }
-    .gallery a:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 16px rgba(212,175,55,0.4);
-    }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-    .contact {
-      background-color: var(--warna-hijau);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    .contact h3 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: var(--warna-emas);
-    }
-    .contact p {
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.8;
-      font-size: 1.1em;
-    }
-    .contact a {
-      background-color: var(--warna-emas);
-      color: #121212;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 30px;
-      transition: background 0.3s, color 0.3s;
-    }
-    .contact a:hover {
-      background-color: #f7d75b;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #999;
-      padding: 25px;
-      background-color: #1a1a1a;
-    }
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 0.95em;
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imaginary Desain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      nav a {
-        font-size: 1.4em;
+
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #111;
+        background: #fff;
+        line-height: 1.6;
       }
-      nav a::after {
-        content: attr(title);
-        display: block;
-        font-size: 0.6em;
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        z-index: 10;
+        font-size: 0.9rem;
+      }
+
+      header nav a {
+        margin-left: 1.5rem;
+        text-decoration: none;
+        color: #111;
+        transition: color 0.3s ease;
+      }
+
+      header nav a:hover {
         color: #888;
       }
-    }
-  </style>
-</head>
-<body>
-  <canvas id="smoke"></canvas>
-  <header>
-    <div class="logo-container">
-      <img src="Imaginary 1.png" alt="Logo Imaginary">
-      <h1>Imaginarydesain</h1>
-    </div>
-    <nav>
-      <a href="#portofolio" title="Gallery"><i class="bi bi-grid"></i></a>
-      <a href="#kontak" title="Kontak"><i class="bi bi-envelope"></i></a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Mewujudkan Ruang Impian Anda, dari Konsep Hingga Visualisasi Nyata</h2>
-  </section>
-
-  <section id="portofolio" class="section">
-    <h3>Gallery</h3>
-    <div class="gallery">
-      <a href="proyek1.html">
-        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" alt="Proyek 1">
-      </a>
-      <a href="proyek2.html">
-        <img src="https://images.unsplash.com/photo-1599423300746-b62533397364" alt="Proyek 2">
-      </a>
-      <a href="proyek3.html">
-        <img src="https://images.unsplash.com/photo-1600585152931-07c98a67b3e6" alt="Proyek 3">
-      </a>
-      <a href="proyek4.html">
-        <img src="https://images.unsplash.com/photo-1505692794403-55b55f1d6b42" alt="Proyek 4">
-      </a>
-    </div>
-  </section>
-
-  <section id="kontak" class="contact">
-    <h3>Hubungi Kami</h3>
-    <p>Kami hadir untuk membantu Anda merancang hunian atau bangunan komersial yang tidak hanya indah secara visual, tetapi juga fungsional dan efisien secara teknis.<br>
-    Mulai dari desain arsitektur 2D, visualisasi 3D lengkap dengan video, hingga estimasi biaya bangunan dan renovasi — semua kami kerjakan dengan presisi dan dedikasi.</p>
-    <a href="https://wa.me/6281233406743" target="_blank">Hubungi via WhatsApp</a>
-  </section>
-
-  <footer>
-    &copy; 2025 Imaginarydesain. All rights reserved.
-  </footer>
-
-  <script>
-    const canvas = document.getElementById("smoke");
-    const ctx = canvas.getContext("2d");
-    let w, h;
-    let particles = [];
-    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    window.addEventListener("mousemove", (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-
-    function createParticle() {
-      return {
-        x: mouse.x + (Math.random() - 0.5) * 60,
-        y: mouse.y + 20,
-        radius: Math.random() * 30 + 20,
-        alpha: Math.random() * 0.1 + 0.05,
-        dx: (Math.random() - 0.5) * 1,
-        dy: Math.random() * -0.5 - 0.2,
-      };
-    }
-
-    setInterval(() => {
-      for (let i = 0; i < 2; i++) {
-        particles.push(createParticle());
+      .hero {
+        height: 100vh;
+        background: url('Tampak Depan Ruko rev.2a.jpg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
       }
-    }, 150);
 
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach((p, i) => {
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(212,175,55,${p.alpha})`;
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-        p.alpha -= 0.002;
-        if (p.alpha <= 0) particles.splice(i, 1);
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-  </script>
-</body>
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.25);
+      }
+
+      .hero h1 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 4rem;
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        line-height: 1.2;
+        padding: 0 1rem;
+        color: #fff;
+        background: linear-gradient(90deg, #ffef9f, #fff, #ffef9f);
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: flowLight 6s linear infinite;
+      }
+
+      @keyframes flowLight {
+        0% {
+          background-position: 200% center;
+        }
+        100% {
+          background-position: 0 center;
+        }
+      }
+
+      .section {
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .section h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(90deg, #b8860b, #cfc08f, #b8860b);
+        background-size: 150% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: glowTrace 10s linear infinite;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .grid img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .grid img:hover {
+        transform: scale(1.03);
+      }
+
+      footer {
+        background: #f5f5f5;
+        padding: 2rem;
+        text-align: center;
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      .whatsapp-button {
+        display: inline-block;
+        background-color: #25d366;
+        color: white;
+        padding: 0.75rem 1.25rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      .whatsapp-button:hover {
+        background-color: #1ebe57;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div><strong>ImaginaryDesain</strong></div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">Tentang</a>
+        <a href="#services">Layanan</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#contact">Kontak</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Merancang Masa Depan<br />dengan Imajinasi dan Presisi</h1>
+    </section>
+
+    <section class="section" id="about">
+      <h2>Tentang Kami</h2>
+      <p>Kami adalah studio arsitektur dan desain kreatif yang berfokus pada rancangan estetis, fungsional, dan penuh imajinasi. Berpengalaman dalam berbagai jenis proyek mulai dari rumah tinggal hingga komersial, kami berkomitmen menghadirkan solusi terbaik untuk klien kami.</p>
+    </section>
+
+    <section class="section" id="services">
+      <h2>Layanan Kami</h2>
+      <ul style="line-height: 2;">
+        <li>Desain Arsitektur Rumah Tinggal & Komersial</li>
+        <li>Perencanaan Interior dan Eksterior</li>
+        <li>Gambar Kerja Lengkap (Autocad, PDF)</li>
+        <li>Konsultasi Desain & Pengawasan</li>
+        <li>Perhitungan Rencana Anggaran Biaya (RAB)</li>
+      </ul>
+    </section>
+
+    <section class="section" id="gallery">
+      <h2>Galeri Produk Terbaru</h2>
+      <div class="grid">
+        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Produk 1" />
+        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Produk 2" />
+        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Produk 3" />
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2>Proyek Kami</h2>
+      <div class="grid">
+        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Proyek 1" />
+        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Proyek 2" />
+        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Proyek 3" />
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Kontak</h2>
+      <p>Email: imaginarydesain@email.com</p>
+      <p>Instagram: @imaginarydesain</p>
+      <a class="whatsapp-button" href="https://wa.me/6281233406743" target="_blank">Hubungi via WhatsApp</a>
+    </section>
+
+    <footer>
+      &copy; 2025 Imaginary Desain. All rights reserved.
+    </footer>
+  </body>
 </html>
