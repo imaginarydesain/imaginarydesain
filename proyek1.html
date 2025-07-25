@@ -3,65 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Proyek 1 – Imaginarydesain</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Galeri Proyek</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212;
+      font-family: sans-serif;
+      background-color: #111;
       color: #eee;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+    .slider {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow: hidden;
+      margin-top: 30px;
     }
-    h1 {
-      color: #d4af37;
-      text-align: center;
-    }
-    .main-img {
+    .slide-image {
+      display: none;
       width: 100%;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
-    p {
-      font-size: 1.1em;
-      line-height: 1.8;
+    .active {
+      display: block;
+      opacity: 1;
     }
-    .back-link {
-      display: inline-block;
-      margin-top: 40px;
-      text-decoration: none;
-      color: #d4af37;
-      font-weight: bold;
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 5px 10px;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10;
     }
-    .back-link:hover {
-      text-decoration: underline;
+    .left-arrow {
+      left: 10px;
+    }
+    .right-arrow {
+      right: 10px;
+    }
+    .fullscreen-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1rem;
+      padding: 5px 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #888;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .description {
+      margin-top: 10px;
+      font-size: 1rem;
+      text-align: center;
+      max-width: 800px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Proyek Rumah Tropis Minimalis</h1>
-    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" alt="Rumah Tropis" class="main-img" />
-    <p>
-      Proyek ini adalah desain rumah tinggal tropis minimalis yang mengedepankan pencahayaan alami,
-      ventilasi silang, dan pemilihan material ramah lingkungan. Konsep ini cocok untuk daerah beriklim hangat
-      dengan kebutuhan ruang keluarga yang terbuka, nyaman, dan berestetika tinggi.
-    </p>
-    <p>
-      Desain ini mencakup:
-      <ul>
-        <li>Denah rumah 2 lantai</li>
-        <li>Render eksterior 3D</li>
-        <li>Video walkthrough</li>
-        <li>Estimasi biaya pembangunan</li>
-      </ul>
-    </p>
-    <a class="back-link" href="index.html">&larr; Kembali ke Beranda</a>
+  <h2>Galeri Proyek</h2>
+  <div class="slider" id="slider">
+    <img src="images/tampak-depan.jpg" class="slide-image active" alt="Tampak Depan">
+    <img src="images/denah-lt1.jpg" class="slide-image" alt="Denah Lantai 1">
+    <img src="images/denah-lt2.jpg" class="slide-image" alt="Denah Lantai 2">
+    <img src="images/tampak-perspektiv.jpg" class="slide-image" alt="Tampak Perspektif">
+
+    <div class="arrow left-arrow" onclick="changeSlide(-1)">&#10094;</div>
+    <div class="arrow right-arrow" onclick="changeSlide(1)">&#10095;</div>
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
   </div>
+
+  <div class="description" id="desc">
+    Tampak depan klinik – desain modern minimalis dengan permainan kisi.
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide-image");
+    const descriptions = [
+      "Tampak depan klinik – desain modern minimalis dengan permainan kisi.",
+      "Denah lantai 1 – area pelayanan utama & ruang tunggu.",
+      "Denah lantai 2 – ruang dokter, administrasi, dan manajemen.",
+      "Tampak perspektif – visualisasi keseluruhan bangunan dan lingkungan."
+    ];
+    let current = 0;
+    let interval = setInterval(() => changeSlide(1), 5000); // auto-slide every 5 seconds
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) {
+          slide.classList.add("active");
+        }
+      });
+      document.getElementById("desc").textContent = descriptions[index];
+    }
+
+    function changeSlide(direction) {
+      current += direction;
+      if (current < 0) current = slides.length - 1;
+      if (current >= slides.length) current = 0;
+      showSlide(current);
+    }
+
+    function toggleFullscreen() {
+      const elem = document.getElementById("slider");
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => alert(`Error attempting to enable full-screen mode: ${err.message}`));
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
