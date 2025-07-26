@@ -77,13 +77,13 @@
   <h2>Galeri Proyek</h2>
   <div class="slider" id="slider">
     <img src="images/Tampak-Depan.jpg" class="slide-image active" alt="Tampak Depan">
-     <img src="images/Tampak-Depan-2.jpg" class="slide-image active" alt="Tampak Perspectif">
+    <img src="images/Tampak-Depan-2.jpg" class="slide-image" alt="Tampak Perspektif">
     <img src="images/Denah-LT-1.jpg" class="slide-image" alt="Denah Lantai 1">
     <img src="images/Denah-LT-2.jpg" class="slide-image" alt="Denah Lantai 2">
-    <img src="images/Isometrik-Lantai-1-EL.jpg" class="slide-image" alt="Tampak Denah Isometrik lantai 1">
-    <img src="images/Isometrik-Lantai-2-EL.jpg" class="slide-image" alt="Tampak Denah Isometrik lantai 2">
-    <img src="images/Resepsionis-1.jpg" class="slide-image" alt="Tampak Resepsionis">
-    <img src="images/Resepsionis-2.jpg" class="slide-image" alt="Tampak Resepsionis">
+    <img src="images/Isometrik-Lantai-1-EL.jpg" class="slide-image" alt="Isometrik LT1">
+    <img src="images/Isometrik-Lantai-2-EL.jpg" class="slide-image" alt="Isometrik LT2">
+    <img src="images/Resepsionis-1.jpg" class="slide-image" alt="Resepsionis 1">
+    <img src="images/Resepsionis-2.jpg" class="slide-image" alt="Resepsionis 2">
 
     <div class="arrow left-arrow" onclick="changeSlide(-1)">&#10094;</div>
     <div class="arrow right-arrow" onclick="changeSlide(1)">&#10095;</div>
@@ -98,10 +98,15 @@
     const slides = document.querySelectorAll(".slide-image");
     const descriptions = [
       "Tampak depan klinik – desain modern minimalis dengan permainan kisi.",
+      "Tampak perspektif – sudut pandang lain dari depan klinik.",
       "Denah lantai 1 – area pelayanan utama & ruang tunggu.",
       "Denah lantai 2 – ruang dokter, administrasi, dan manajemen.",
-      "Tampak perspektif – visualisasi keseluruhan bangunan dan lingkungan."
+      "Tampak Denah Isometrik lantai 1.",
+      "Tampak Denah Isometrik lantai 2.",
+      "Tampak Resepsionis 1.",
+      "Tampak Resepsionis 2."
     ];
+
     let current = 0;
     let interval = setInterval(() => changeSlide(1), 5000); // auto-slide every 5 seconds
 
