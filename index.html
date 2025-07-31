@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Imaginary Desain</title>
+    <title>Imaginary Desain | Studio Arsitektur Kreatif</title>
+    <meta name="description" content="Studio arsitektur profesional dengan pendekatan imajinatif dan presisi tinggi untuk desain hunian & komersial">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+      :root {
+        --primary: #b8860b;
+        --secondary: #2b2d42;
+        --light: #f8f9fa;
+        --dark: #111;
+        --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
       * {
         margin: 0;
         padding: 0;
@@ -19,49 +31,101 @@
 
       body {
         font-family: 'Inter', sans-serif;
-        color: #111;
+        color: var(--dark);
         background: #fff;
         line-height: 1.6;
+        overflow-x: hidden;
       }
 
+      /* Header & Navigation */
       header {
         position: fixed;
         top: 0;
         width: 100%;
-        padding: 1.5rem 2rem;
+        padding: 1.2rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: rgba(255, 255, 255, 0.85);
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(8px);
-        z-index: 10;
-        font-size: 0.9rem;
+        z-index: 100;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        transition: var(--transition);
       }
 
-      header .logo {
+      header.scrolled {
+        padding: 0.8rem 2rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      }
+
+      .logo {
         display: flex;
         align-items: center;
+        gap: 10px;
       }
 
-      header .logo img {
-        height: 40px;
-        margin-right: 10px;
+      .logo img {
+        height: 42px;
+        transition: var(--transition);
       }
 
-      header nav a {
-        margin-left: 1.5rem;
+      .logo-text {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--secondary);
+      }
+
+      /* Mobile Navigation */
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: var(--secondary);
+        cursor: pointer;
+        z-index: 101;
+      }
+
+      nav {
+        display: flex;
+        gap: 1.8rem;
+      }
+
+      nav a {
+        position: relative;
         text-decoration: none;
-        color: #111;
-        transition: color 0.3s ease;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: var(--transition);
+        padding: 0.3rem 0;
       }
 
-      header nav a:hover {
-        color: #888;
+      nav a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: var(--transition);
       }
 
+      nav a:hover::after,
+      nav a.active::after {
+        width: 100%;
+      }
+
+      nav a:hover {
+        color: var(--primary);
+      }
+
+      /* Hero Section */
       .hero {
         height: 100vh;
-        background: url('Tampak Depan Ruko rev.2a.jpg') center/cover no-repeat;
+        min-height: 700px;
+        background: linear-gradient(rgba(0, 0, 0, 0.3)), url('Tampak Depan Ruko rev.2a.jpg') center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -69,172 +133,730 @@
         position: relative;
       }
 
-      .hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.25);
+      .hero-content {
+        max-width: 900px;
+        padding: 0 1.5rem;
       }
 
       .hero h1 {
         font-family: 'DM Serif Display', serif;
-        font-size: 4rem;
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        line-height: 1.2;
-        padding: 0 1rem;
-        background: linear-gradient(90deg, #ffef9f, #fff, #ffef9f);
-        background-size: 200% auto;
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        animation: flowLight 6s linear infinite;
+        font-size: clamp(2.5rem, 6vw, 4.2rem);
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 1s forwards 0.3s;
       }
 
-      @keyframes flowLight {
-        0% {
-          background-position: 200% center;
-        }
-        100% {
-          background-position: 0 center;
-        }
+      .hero-btn {
+        display: inline-block;
+        background: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+        padding: 0.9rem 2.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-top: 1rem;
+        transition: var(--transition);
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 1s forwards 0.6s;
       }
 
+      .hero-btn:hover {
+        background: rgba(255,255,255,0.15);
+        transform: translateY(-3px);
+      }
+
+      /* Sections */
       .section {
-        padding: 6rem 2rem;
+        padding: 6rem 1.5rem;
         max-width: 1200px;
-        margin: auto;
+        margin: 0 auto;
       }
 
-      .section h2 {
+      .section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+      }
+
+      .section-title {
         font-family: 'DM Serif Display', serif;
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        background: linear-gradient(90deg, #b8860b, #cfc08f, #b8860b);
-        background-size: 150% auto;
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        animation: glowTrace 10s linear infinite;
-        text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        color: var(--secondary);
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1rem;
       }
 
-      .grid {
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      .section-subtitle {
+        max-width: 700px;
+        margin: 0 auto;
+        color: #555;
+        font-size: 1.1rem;
+      }
+
+      /* About Section */
+      .about-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-image {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+
+      .about-image img {
+        width: 100%;
+        display: block;
+        transition: var(--transition);
+      }
+
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .about-text p {
+        margin-bottom: 1.2rem;
+        font-size: 1.05rem;
+      }
+
+      /* Services */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
       }
 
-      .grid img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.3s ease;
-      }
-
-      .grid img:hover {
-        transform: scale(1.03);
-      }
-
-      footer {
-        background: #f5f5f5;
-        padding: 2rem;
+      .service-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 2.5rem 2rem;
         text-align: center;
-        font-size: 0.875rem;
-        color: #666;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        transition: var(--transition);
+        border: 1px solid rgba(0,0,0,0.05);
       }
 
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      }
+
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(184, 134, 11, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 1.8rem;
+        color: var(--primary);
+      }
+
+      .service-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      /* Gallery & Projects */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.8rem;
+      }
+
+      .gallery-item {
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        height: 300px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        padding: 1.5rem;
+        color: #fff;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+
+      .gallery-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Contact Section */
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        background: #f9f9f9;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .contact-info {
+        padding: 3rem;
+      }
+
+      .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .contact-method {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(184, 134, 11, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: var(--primary);
+      }
+
+      .contact-form {
+        background: #fff;
+        padding: 3rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.9rem 1.2rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.2);
+      }
+
+      textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        background: #a3780a;
+        transform: translateY(-3px);
+      }
+
+      /* WhatsApp Button */
       .whatsapp-button {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         background-color: #25d366;
         color: white;
-        padding: 0.75rem 1.25rem;
-        border-radius: 5px;
+        padding: 0.9rem 1.8rem;
+        border-radius: 50px;
         text-decoration: none;
         font-weight: 600;
-        transition: background-color 0.3s ease;
-        margin-top: 1rem;
+        transition: var(--transition);
+        margin-top: 1.5rem;
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
       }
 
       .whatsapp-button:hover {
         background-color: #1ebe57;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--secondary);
+        color: #fff;
+        padding: 3rem 1.5rem;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .copyright {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.7);
+      }
+
+      /* Animations */
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .fade-in.appear {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .about-content,
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+        
+        .about-image {
+          max-width: 600px;
+          margin: 0 auto;
+        }
       }
 
       @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.5rem;
+        header {
+          padding: 1rem;
+        }
+        
+        .nav-toggle {
+          display: block;
+        }
+        
+        nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          height: 100vh;
+          width: 280px;
+          background: #fff;
+          flex-direction: column;
+          padding: 6rem 2rem 2rem;
+          box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+          transition: var(--transition);
+        }
+        
+        nav.active {
+          right: 0;
+        }
+        
+        .section {
+          padding: 4rem 1.5rem;
+        }
+        
+        .contact-info,
+        .contact-form {
+          padding: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero {
+          min-height: 600px;
+        }
+        
+        .logo-text {
+          font-size: 1rem;
+        }
+        
+        .service-card {
+          padding: 2rem 1.5rem;
         }
       }
     </style>
   </head>
   <body>
-    <header>
+    <header id="header">
       <div class="logo">
         <img src="Imaginary 1.png" alt="Logo ImaginaryDesain">
-        <strong>ImaginaryDesain</strong>
+        <div class="logo-text">ImaginaryDesain</div>
       </div>
-      <nav>
-        <a href="#projects">Projects</a>
+      
+      <button class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav id="navMenu">
+        <a href="#home" class="active">Home</a>
         <a href="#about">Tentang</a>
         <a href="#services">Layanan</a>
         <a href="#gallery">Galeri</a>
+        <a href="#projects">Proyek</a>
         <a href="#contact">Kontak</a>
       </nav>
     </header>
 
-    <section class="hero">
-      <h1>Merancang Masa Depan<br />dengan Imajinasi dan Presisi</h1>
-    </section>
-
-    <section class="section" id="about">
-      <h2>Tentang Kami</h2>
-      <p>Kami adalah studio arsitektur dan desain kreatif yang berfokus pada rancangan estetis, fungsional, dan penuh imajinasi. Berpengalaman dalam berbagai jenis proyek mulai dari rumah tinggal hingga komersial, kami berkomitmen menghadirkan solusi terbaik untuk klien kami.</p>
-    </section>
-
-    <section class="section" id="services">
-      <h2>Layanan Kami</h2>
-      <ul style="line-height: 2;">
-        <li>Desain Arsitektur Rumah Tinggal & Komersial</li>
-        <li>Perencanaan Interior dan Eksterior</li>
-        <li>Gambar Kerja Lengkap (Autocad, PDF)</li>
-        <li>Konsultasi Desain & Pengawasan</li>
-        <li>Perhitungan Rencana Anggaran Biaya (RAB)</li>
-      </ul>
-    </section>
-
-    <section class="section" id="gallery">
-      <h2>Galeri Produk Terbaru</h2>
-      <div class="grid">
-        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Produk 1" />
-        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Produk 2" />
-        <img src="Tampak Depan Ruko rev.2a.jpg" alt="Produk 3" />
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Merancang Masa Depan<br />dengan Imajinasi dan Presisi</h1>
+        <a href="#contact" class="hero-btn">Konsultasi Desain Gratis</a>
       </div>
     </section>
 
-    <section class="section" id="projects">
-  <h2>Proyek Kami</h2>
-  <div class="grid">
-    <a href="https://imaginarydesain.netlify.app/proyek1" target="_blank">
-      <img src="images/Tampak-Depan.jpg" alt="Proyek 1" />
-    </a>
-    <img src="Tampak Depan Ruko rev.2a.jpg" alt="Proyek 2" />
-    <img src="Tampak Depan Ruko rev.2a.jpg" alt="Proyek 3" />
-  </div>
-</section>
+    <section class="section" id="about">
+      <div class="section-header">
+        <h2 class="section-title">Tentang Kami</h2>
+        <p class="section-subtitle">Studio arsitektur kreatif yang menghadirkan solusi desain inovatif</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-image fade-in">
+          <img src="Tampak Depan Ruko rev.2a.jpg" alt="Kantor ImaginaryDesain">
+        </div>
+        
+        <div class="about-text fade-in">
+          <p>ImaginaryDesain adalah studio arsitektur profesional yang menggabungkan kreativitas imajinatif dengan ketelitian teknis. Didirikan pada tahun 2020, kami telah menyelesaikan lebih dari 50 proyek desain baik untuk hunian pribadi maupun komersial.</p>
+          
+          <p>Kami percaya bahwa setiap ruang memiliki cerita uniknya sendiri. Pendekatan kami berpusat pada pemahaman mendalam tentang kebutuhan klien, gaya hidup, dan impian mereka untuk menciptakan desain yang tidak hanya indah tetapi juga fungsional.</p>
+          
+          <p>Dengan tim yang terdiri dari arsitek, desainer interior, dan ahli teknis berpengalaman, kami berkomitmen untuk menghadirkan solusi terbaik yang memadukan estetika kontemporer dengan kepraktisan sehari-hari.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" style="background: #f9f9f9;">
+      <div class="section-header">
+        <h2 class="section-title">Layanan Kami</h2>
+        <p class="section-subtitle">Solusi lengkap untuk kebutuhan desain arsitektur Anda</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-drafting-compass"></i>
+          </div>
+          <h3 class="service-title">Desain Arsitektur</h3>
+          <p>Rancangan lengkap untuk rumah tinggal, ruko, kantor, dan bangunan komersial dengan pendekatan kreatif dan fungsional.</p>
+        </div>
+        
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-couch"></i>
+          </div>
+          <h3 class="service-title">Desain Interior</h3>
+          <p>Transformasi ruang dalam yang estetis dengan penataan furnitur, pemilihan material, dan pencahayaan yang tepat.</p>
+        </div>
+        
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-file-contract"></i>
+          </div>
+          <h3 class="service-title">Gambar Kerja</h3>
+          <p>Pembuatan dokumen teknis lengkap (AutoCAD, SketchUp, PDF) untuk proses konstruksi yang presisi.</p>
+        </div>
+        
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3 class="service-title">RAB & Konsultasi</h3>
+          <p>Perhitungan anggaran proyek dan pendampingan selama proses konstruksi untuk hasil terbaik.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="section-header">
+        <h2 class="section-title">Galeri Produk</h2>
+        <p class="section-subtitle">Karya terbaru yang telah kami rancang untuk klien</p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item fade-in">
+          <img src="Tampak Depan Ruko rev.2a.jpg" alt="Desain Ruko Modern">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Ruko Minimalis</h3>
+            <p>Konsep modern dengan fasad dinamis</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item fade-in">
+          <img src="Tampak Depan Ruko rev.2a.jpg" alt="Desain Rumah Tinggal">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Rumah Tropis Modern</h3>
+            <p>Harmoni alam dan arsitektur kontemporer</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item fade-in">
+          <img src="Tampak Depan Ruko rev.2a.jpg" alt="Desain Kantor">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Kantor Startup</h3>
+            <p>Ruang kerja kreatif dan ergonomis</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" style="background: #f9f9f9;">
+      <div class="section-header">
+        <h2 class="section-title">Proyek Kami</h2>
+        <p class="section-subtitle">Beberapa karya yang telah kami realisasikan</p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item fade-in">
+          <a href="https://imaginarydesain.netlify.app/proyek1" target="_blank">
+            <img src="Tampak Depan Ruko rev.2a.jpg" alt="Proyek Ruko Tangerang">
+          </a>
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Ruko BSD City</h3>
+            <p>Desain modern 2 lantai dengan rooftop garden</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item fade-in">
+          <img src="Tampak Depan Ruko rev.2a.jpg" alt="Proyek Rumah Bandung">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Rumah Dago Pakar</h3>
+            <p>Konsep hillside residence dengan pemandangan kota</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item fade-in">
+          <img src="Tampak Depan Ruko rev.2a.jpg" alt="Proyek Kantor Jakarta">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Kantor SCBD Jakarta</h3>
+            <p>Office space futuristik untuk perusahaan fintech</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="contact">
-      <h2>Kontak</h2>
-      <p>Email: imaginarydesain@email.com</p>
-      <p>Instagram: @imaginarydesain</p>
-      <a class="whatsapp-button" href="https://wa.me/6281233406743" target="_blank">Hubungi via WhatsApp</a>
+      <div class="section-header">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <p class="section-subtitle">Konsultasikan kebutuhan desain Anda dengan tim profesional kami</p>
+      </div>
+      
+      <div class="contact-container">
+        <div class="contact-info fade-in">
+          <h3>Informasi Kontak</h3>
+          <p class="section-subtitle" style="text-align: left; margin: 1.5rem 0;">Kami siap membantu mewujudkan impian desain Anda</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h4>Lokasi</h4>
+                <p>Jl. Arsitek No. 15, Jakarta Selatan</p>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h4>Email</h4>
+                <p>imaginarydesain@email.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div>
+                <h4>Instagram</h4>
+                <p>@imaginarydesain</p>
+              </div>
+            </div>
+          </div>
+          
+          <a class="whatsapp-button" href="https://wa.me/6281233456789" target="_blank">
+            <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+          </a>
+        </div>
+        
+        <div class="contact-form fade-in">
+          <h3>Kirim Pesan</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Nama Lengkap</label>
+              <input type="text" id="name" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Nomor Telepon</label>
+              <input type="tel" id="phone" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Pesan</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
     </section>
 
     <footer>
-      &copy; 2025 Imaginary Desain. All rights reserved.
+      <div class="footer-content">
+        <img src="Imaginary 1.png" alt="Logo ImaginaryDesain" style="height: 50px; margin-bottom: 1.5rem;">
+        <p>Mengubah imajinasi menjadi kenyataan melalui desain arsitektur yang presisi</p>
+        
+        <div style="margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center;">
+          <a href="#" style="color: #fff; font-size: 1.3rem;"><i class="fab fa-instagram"></i></a>
+          <a href="#" style="color: #fff; font-size: 1.3rem;"><i class="fab fa-facebook"></i></a>
+          <a href="#" style="color: #fff; font-size: 1.3rem;"><i class="fab fa-youtube"></i></a>
+          <a href="#" style="color: #fff; font-size: 1.3rem;"><i class="fab fa-linkedin"></i></a>
+        </div>
+        
+        <div class="copyright">
+          &copy; 2025 Imaginary Desain. All rights reserved.
+        </div>
+      </div>
     </footer>
+
+    <script>
+      // Mobile Navigation Toggle
+      const navToggle = document.getElementById('navToggle');
+      const navMenu = document.getElementById('navMenu');
+      
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+      
+      // Close menu when clicking on nav links
+      document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
+      
+      // Header scroll effect
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Scroll animations
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      });
+      
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Form submission
+      const contactForm = document.getElementById('contactForm');
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Terima kasih! Pesan Anda telah terkirim. Kami akan menghubungi Anda segera.');
+        contactForm.reset();
+      });
+    </script>
   </body>
 </html>
