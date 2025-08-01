@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Profesional | ImaginaryDesain</title>
+    <style>
+        :root {
+            --primary: #B8860B; /* Gold */
+            --secondary: #2B2D42; /* Dark blue */
+            --light: #F8F9FA; /* Light bg */
+            --dark: #111;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Service Hero */
+        .service-hero {
+            background: linear-gradient(rgba(43, 45, 66, 0.9)), url('service-bg.jpg') center/cover;
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+        
+        .service-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .service-hero p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Service Grid */
+        .services-container {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+        
+        .service-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .service-tab {
+            padding: 0.8rem 2rem;
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .service-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .service-details {
+            padding: 2rem;
+        }
+        
+        .service-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .service-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .service-features {
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 0.3rem;
+        }
+        
+        .service-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .service-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="service-hero">
+        <h1>Layanan Kami</h1>
+        <p>Solusi lengkap untuk kebutuhan desain arsitektur Anda</p>
+    </section>
+
+    <div class="services-container">
+        <div class="service-tabs">
+            <div class="service-tab active" data-tab="architecture">Desain Arsitektur</div>
+            <div class="service-tab" data-tab="interior">Desain Interior</div>
+            <div class="service-tab" data-tab="drawings">Gambar Kerja</div>
+            <div class="service-tab" data-tab="consultation">RAB & Konsultasi</div>
+        </div>
+
+        <!-- Desain Arsitektur -->
+        <div class="service-content" id="architecture-content">
+            <div class="service-details">
+                <h2 class="service-title">Desain Arsitektur</h2>
+                <p>Kami menciptakan rancangan lengkap yang menggabungkan kreativitas dengan fungsionalitas untuk berbagai jenis bangunan.</p>
+                
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Konsep Inovatif</h4>
+                            <p>Desain unik yang disesuaikan dengan karakter klien dan lingkungan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Analisis Tapak</h4>
+                            <p>Studi mendalam tentang kondisi lahan dan lingkungan sekitar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>3D Visualization</h4>
+                            <p>Presentasi konsep melalui gambar 3D realistis</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="cta-button">Konsultasi Sekarang</a>
+            </div>
+            
+            <div class="service-image">
+                <img src="arsitektur-sample.jpg" alt="Contoh Desain Arsitektur" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Desain Interior -->
+        <div class="service-content hidden" id="interior-content">
+            <div class="service-image">
+                <img src="interior-sample.jpg" alt="Contoh Desain Interior" loading="lazy">
+            </div>
+            
+            <div class="service-details">
+                <h2 class="service-title">Desain Interior</h2>
+                <p>Transformasi ruang dalam yang estetis dengan penataan furnitur, pemilihan material, dan pencahayaan yang tepat.</p>
+                
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Space Planning</h4>
+                            <p>Optimalisasi tata ruang untuk kenyamanan dan fungsionalitas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Material Selection</h4>
+                            <p>Rekomendasi material berkualitas dengan estetika terbaik</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Lighting Design</h4>
+                            <p>Perencanaan pencahayaan untuk menciptakan atmosfer ideal</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="cta-button">Konsultasi Sekarang</a>
+            </div>
+        </div>
+
+        <!-- Gambar Kerja -->
+        <div class="service-content hidden" id="drawings-content">
+            <div class="service-details">
+                <h2 class="service-title">Gambar Kerja</h2>
+                <p>Pembuatan dokumen teknis lengkap untuk memastikan proses konstruksi berjalan dengan presisi.</p>
+                
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Detail Teknis</h4>
+                            <p>Gambar konstruksi lengkap dengan detail material dan dimensi</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Multi-Format</h4>
+                            <p>File AutoCAD, SketchUp, PDF, dan format lainnya</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Koordinasi</h4>
+                            <p>Kolaborasi dengan kontraktor dan konsultan lainnya</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="cta-button">Konsultasi Sekarang</a>
+            </div>
+            
+            <div class="service-image">
+                <img src="drawings-sample.jpg" alt="Contoh Gambar Kerja" loading="lazy">
+            </div>
+        </div>
+
+        <!-- RAB & Konsultasi -->
+        <div class="service-content hidden" id="consultation-content">
+            <div class="service-image">
+                <img src="consultation-sample.jpg" alt="Proses Konsultasi" loading="lazy">
+            </div>
+            
+            <div class="service-details">
+                <h2 class="service-title">RAB & Konsultasi</h2>
+                <p>Perhitungan anggaran proyek dan pendampingan selama proses konstruksi untuk hasil terbaik.</p>
+                
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>RAB Detail</h4>
+                            <p>Perhitungan biaya konstruksi per item pekerjaan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Value Engineering</h4>
+                            <p>Optimasi biaya tanpa mengorbankan kualitas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4>Site Supervision</h4>
+                            <p>Pengawasan lapangan untuk memastikan kualitas konstruksi</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="cta-button">Konsultasi Sekarang</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab Navigation
+        const tabs = document.querySelectorAll('.service-tab');
+        const contents = document.querySelectorAll('.service-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all contents
+                contents.forEach(content => content.classList.add('hidden'));
+                // Show selected content
+                const target = tab.getAttribute('data-tab');
+                document.getElementById(`${target}-content`).classList.remove('hidden'));
+            });
+        });
+        
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.service-content').forEach(content => {
+            content.style.opacity = 0;
+            content.style.transform = 'translateY(30px)';
+            content.style.transition = 'all 0.6s ease';
+            observer.observe(content);
+        });
+    </script>
+</body>
+</html>
