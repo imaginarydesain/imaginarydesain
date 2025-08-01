@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imaginary Desain | Studio Arsitektur Kreatif</title>
+  <meta name="description" content="Studio arsitektur profesional dengan pendekatan imajinatif dan presisi tinggi untuk desain hunian & komersial">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* ... (CSS sebelumnya tetap sama) ... */
+    
+    /* MODAL STYLES */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-container {
+      background: white;
+      width: 90%;
+      max-width: 1000px;
+      max-height: 90vh;
+      border-radius: 15px;
+      overflow: hidden;
+      transform: scale(0.8);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .modal-overlay.active .modal-container {
+      transform: scale(1);
+      opacity: 1;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      background: var(--secondary);
+      color: white;
+      position: relative;
+    }
+    
+    .modal-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      transform: rotate(90deg);
+    }
+    
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      overflow-y: auto;
+      max-height: 70vh;
+    }
+    
+    .modal-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .modal-main-image {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 350px;
+      background: #f5f5f5;
+    }
+    
+    .modal-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .modal-thumbnails {
+      display: flex;
+      gap: 0.8rem;
+    }
+    
+    .modal-thumb {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-thumb:hover, .modal-thumb.active {
+      border-color: var(--primary);
+    }
+    
+    .modal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .modal-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .project-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .info-item h4 {
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .info-item p {
+      margin: 0;
+      font-weight: 500;
+    }
+    
+    .project-description {
+      line-height: 1.7;
+    }
+    
+    .modal-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+    }
+    
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    
+    .nav-btn:hover {
+      background: #a3780a;
+    }
+    
+    .nav-btn.prev {
+      background: var(--secondary);
+    }
+    
+    .nav-btn.prev:hover {
+      background: #1f2130;
+    }
+    
+    /* Responsive Modal */
+    @media (max-width: 900px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+      
+      .modal-main-image {
+        height: 300px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .modal-container {
+        width: 95%;
+      }
+      
+      .modal-body {
+        padding: 1.5rem;
+      }
+      
+      .modal-title {
+        font-size: 1.5rem;
+      }
+      
+      .project-info {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ... (HTML sebelumnya tetap sama) ... -->
+
+  <!-- Modal Gallery -->
+  <div class="modal-overlay" id="galleryModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalProjectTitle">Nama Proyek</h2>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <div class="modal-main-image">
+            <img id="modalMainImage" src="" alt="Main Project Image">
+          </div>
+          <div class="modal-thumbnails" id="modalThumbnails">
+            <!-- Thumbnails will be added here by JavaScript -->
+          </div>
+        </div>
+        <div class="modal-details">
+          <div class="project-info" id="projectInfo">
+            <!-- Project info will be added here by JavaScript -->
+          </div>
+          <div class="project-description" id="projectDescription">
+            <!-- Project description will be added here by JavaScript -->
+          </div>
+          <div class="modal-nav">
+            <button class="nav-btn prev" id="prevProject">
+              <i class="fas fa-arrow-left"></i> Sebelumnya
+            </button>
+            <button class="nav-btn next" id="nextProject">
+              Selanjutnya <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ... (JavaScript sebelumnya tetap sama) ...
+    
+    // Gallery Modal Functionality
+    const galleryModal = document.getElementById('galleryModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalMainImage = document.getElementById('modalMainImage');
+    const modalThumbnails = document.getElementById('modalThumbnails');
+    const modalProjectTitle = document.getElementById('modalProjectTitle');
+    const projectInfo = document.getElementById('projectInfo');
+    const projectDescription = document.getElementById('projectDescription');
+    const prevProject = document.getElementById('prevProject');
+    const nextProject = document.getElementById('nextProject');
+    
+    // Project data
+    const projects = [
+      {
+        id: 1,
+        title: "Ruko Minimalis",
+        subtitle: "Konsep modern dengan fasad dinamis",
+        images: [
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg"
+        ],
+        details: [
+          {label: "Lokasi", value: "Tangerang"},
+          {label: "Luas Tanah", value: "100 m²"},
+          {label: "Luas Bangunan", value: "180 m²"},
+          {label: "Tahun", value: "2024"},
+          {label: "Kategori", value: "Komersial"},
+          {label: "Tim Proyek", value: "3 Arsitek"}
+        ],
+        description: "Desain ruko 2 lantai di kawasan komersial dengan sentuhan modern. Fasad menggunakan kombinasi material beton ekspos dan kayu, menciptakan kesan industrial yang hangat. Lantai dasar difungsikan sebagai area komersial dengan sirkulasi yang efisien, sementara lantai atas menjadi ruang kerja kreatif dengan pencahayaan alami optimal. Desain ini mempertimbangkan aspek fungsional dan estetika untuk menciptakan bangunan yang menarik dan nyaman bagi pengguna."
+      },
+      {
+        id: 2,
+        title: "Rumah Tropis Modern",
+        subtitle: "Harmoni alam dan arsitektur kontemporer",
+        images: [
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg"
+        ],
+        details: [
+          {label: "Lokasi", value: "Bandung"},
+          {label: "Luas Tanah", value: "350 m²"},
+          {label: "Luas Bangunan", value: "220 m²"},
+          {label: "Tahun", value: "2023"},
+          {label: "Kategori", value: "Hunian"},
+          {label: "Tim Proyek", value: "2 Arsitek, 1 Desainer Interior"}
+        ],
+        description: "Rumah tinggal dengan konsep tropis modern yang mengintegrasikan elemen alam ke dalam ruang hidup. Desain ini memanfaatkan pencahayaan alami dan sirkulasi udara yang optimal dengan bukaan besar dan taman dalam. Material kayu dan batu alam digunakan secara dominan untuk menciptakan suasana hangat dan alami. Ruang-ruang disusun secara hierarkis dengan zona publik di depan dan zona privat di belakang, dipisahkan oleh taman transisi yang menjadi jantung rumah."
+      },
+      {
+        id: 3,
+        title: "Kantor Startup",
+        subtitle: "Ruang kerja kreatif dan ergonomis",
+        images: [
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg"
+        ],
+        details: [
+          {label: "Lokasi", value: "Jakarta Selatan"},
+          {label: "Luas Lantai", value: "300 m²"},
+          {label: "Kapasitas", value: "40 Orang"},
+          {label: "Tahun", value: "2024"},
+          {label: "Kategori", value: "Perkantoran"},
+          {label: "Tim Proyek", value: "4 Arsitek, 2 Desainer Interior"}
+        ],
+        description: "Desain kantor startup dengan konsep ruang terbuka yang fleksibel dan modular. Area kerja dirancang dengan sistem hot desking dan berbagai tipe ruang kerja (ruang fokus, ruang kolaborasi, ruang santai) untuk mendukung berbagai aktivitas kerja. Palet warna cerah dan material natural menciptakan suasana energik namun tetap nyaman. Sistem pencahayaan yang dapat diatur sesuai kebutuhan dan akustik yang baik menjadi fokus utama desain ini untuk menciptakan lingkungan kerja yang produktif."
+      },
+      {
+        id: 4,
+        title: "Ruko BSD City",
+        subtitle: "Desain modern 2 lantai dengan rooftop garden",
+        images: [
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg"
+        ],
+        details: [
+          {label: "Lokasi", value: "BSD City, Tangerang"},
+          {label: "Luas Tanah", value: "120 m²"},
+          {label: "Luas Bangunan", value: "240 m²"},
+          {label: "Tahun", value: "2023"},
+          {label: "Kategori", value: "Komersial"},
+          {label: "Fitur Utama", value: "Rooftop Garden"}
+        ],
+        description: "Ruko modern 2 lantai dengan desain fasad yang dinamis menggunakan kombinasi beton ekspos, kayu, dan kaca. Lantai dasar difungsikan sebagai area komersial dengan display toko yang menarik, sementara lantai atas menjadi kantor dengan pencahayaan alami optimal. Fitur unggulan adalah rooftop garden yang menjadi ruang santai dengan pemandangan kota. Desain ini mengoptimalkan ruang terbatas dengan sirkulasi vertikal yang efisien dan penyimpanan terintegrasi."
+      },
+      {
+        id: 5,
+        title: "Rumah Dago Pakar",
+        subtitle: "Konsep hillside residence dengan pemandangan kota",
+        images: [
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg"
+        ],
+        details: [
+          {label: "Lokasi", value: "Dago Pakar, Bandung"},
+          {label: "Luas Tanah", value: "800 m²"},
+          {label: "Luas Bangunan", value: "320 m²"},
+          {label: "Tahun", value: "2022"},
+          {label: "Kategori", value: "Hunian Mewah"},
+          {label: "Fitur Utama", value: "Infinity Pool"}
+        ],
+        description: "Rumah tinggal mewah di perbukitan dengan pemandangan spektakuler ke kota Bandung. Desain arsitektur mengikuti kontur tanah dengan susunan massa bertingkat yang memaksimalkan pemandangan. Material utama batu alam dan kayu memberikan kesan kokoh namun menyatu dengan lingkungan. Ruang-ruang utama seperti living room dan master bedroom menghadap ke pemandangan lebar dengan bukaan kaca besar. Fitur unggulan berupa infinity pool yang seolah menyatu dengan pemandangan kota di bawahnya."
+      },
+      {
+        id: 6,
+        title: "Kantor SCBD Jakarta",
+        subtitle: "Office space futuristik untuk perusahaan fintech",
+        images: [
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg",
+          "Tampak Depan Ruko rev.2a.jpg"
+        ],
+        details: [
+          {label: "Lokasi", value: "SCBD, Jakarta"},
+          {label: "Luas Lantai", value: "500 m²"},
+          {label: "Kapasitas", value: "60 Orang"},
+          {label: "Tahun", value: "2023"},
+          {label: "Kategori", value: "Perkantoran Premium"},
+          {label: "Fitur Utama", value: "Smart Office System"}
+        ],
+        description: "Desain kantor futuristik untuk perusahaan fintech dengan pendekatan teknologi dan kenyamanan. Ruang kerja dirancang dengan sistem modular yang dapat diubah sesuai kebutuhan tim. Zona kolaborasi yang luas dilengkapi dengan teknologi presentasi mutakhir, sementara zona fokus yang tenang dengan akustik terbaik. Palet warna biru dan abu-abu metalik menciptakan suasana profesional namun dinamis. Sistem pencahayaan cerdas yang dapat disesuaikan dengan ritme sirkadian dan pengaturan suhu otomatis menjadi keunggulan utama desain ini."
+      }
+    ];
+    
+    let currentProjectIndex = 0;
+    
+    // Open gallery modal
+    function openGalleryModal(projectId) {
+      // Find project index by ID
+      const index = projects.findIndex(project => project.id === projectId);
+      if (index !== -1) {
+        currentProjectIndex = index;
+        showProject(currentProjectIndex);
+        galleryModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
+    }
+    
+    // Show project in modal
+    function showProject(index) {
+      const project = projects[index];
+      
+      // Set project title
+      modalProjectTitle.textContent = project.title;
+      
+      // Set main image
+      modalMainImage.src = project.images[0];
+      modalMainImage.alt = project.title;
+      
+      // Clear thumbnails
+      modalThumbnails.innerHTML = '';
+      
+      // Create thumbnails
+      project.images.forEach((img, i) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'modal-thumb' + (i === 0 ? ' active' : '');
+        thumb.innerHTML = `<img src="${img}" alt="Thumbnail ${i+1}">`;
+        thumb.addEventListener('click', () => {
+          // Set main image
+          modalMainImage.src = img;
+          
+          // Update active thumbnail
+          document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+        modalThumbnails.appendChild(thumb);
+      });
+      
+      // Set project info
+      projectInfo.innerHTML = '';
+      project.details.forEach(detail => {
+        const infoItem = document.createElement('div');
+        infoItem.className = 'info-item';
+        infoItem.innerHTML = `
+          <h4>${detail.label}</h4>
+          <p>${detail.value}</p>
+        `;
+        projectInfo.appendChild(infoItem);
+      });
+      
+      // Set project description
+      projectDescription.textContent = project.description;
+      
+      // Update nav button states
+      prevProject.disabled = index === 0;
+      nextProject.disabled = index === projects.length - 1;
+    }
+    
+    // Close modal
+    modalClose.addEventListener('click', () => {
+      galleryModal.classList.remove('active');
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+    
+    // Close modal when clicking outside content
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) {
+        galleryModal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+    });
+    
+    // Navigate projects
+    prevProject.addEventListener('click', () => {
+      if (currentProjectIndex > 0) {
+        currentProjectIndex--;
+        showProject(currentProjectIndex);
+      }
+    });
+    
+    nextProject.addEventListener('click', () => {
+      if (currentProjectIndex < projects.length - 1) {
+        currentProjectIndex++;
+        showProject(currentProjectIndex);
+      }
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (galleryModal.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+          if (currentProjectIndex > 0) {
+            currentProjectIndex--;
+            showProject(currentProjectIndex);
+          }
+        } else if (e.key === 'ArrowRight') {
+          if (currentProjectIndex < projects.length - 1) {
+            currentProjectIndex++;
+            showProject(currentProjectIndex);
+          }
+        } else if (e.key === 'Escape') {
+          galleryModal.classList.remove('active');
+          document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+      }
+    });
+    
+    // Add click events to gallery items
+    document.addEventListener('DOMContentLoaded', () => {
+      // Gallery items in "Galeri Produk"
+      document.querySelectorAll('#gallery .gallery-item').forEach((item, index) => {
+        item.addEventListener('click', () => {
+          openGalleryModal(index + 1);
+        });
+      });
+      
+      // Gallery items in "Proyek Kami"
+      document.querySelectorAll('#projects .gallery-item').forEach((item, index) => {
+        item.addEventListener('click', () => {
+          openGalleryModal(index + 4); // Start from ID 4
+        });
+      });
+    });
+  </script>
+</body>
+</html>
