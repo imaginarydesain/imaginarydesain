@@ -249,6 +249,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        /* Geser fokus gambar: ubah angka ini kalau ingin menggeser */
         object-position: 35% center;
       }
 
@@ -342,6 +343,22 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 18px;
+      }
+
+      .service-card,
+      .project-card,
+      .contact-card {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 26px;
+        background: rgba(255, 255, 255, 0.55);
+        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(143,106,42,0.35);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.08);
       }
 
       .service-card,
@@ -561,7 +578,7 @@
                 <span>Konsep dan gambar desain</span>
               </div>
               <div class="stat">
-                <strong>4</strong>
+                <strong>3</strong>
                 <span>Layanan inti yang fokus</span>
               </div>
               <div class="stat">
@@ -628,30 +645,25 @@
               <h2>Layanan yang langsung kepakai.</h2>
             </div>
             <p class="lead">
-              Jangan isi web dengan terlalu banyak layanan palsu. Tampilkan yang memang benar-benar kamu kerjakan.
+              Tiga layanan utama disusun untuk menjawab kebutuhan desain secara utuh: dari tampilan luar dan dalam bangunan, pengolahan interior ruang, hingga dokumen teknis dan perhitungan biaya.
             </p>
           </div>
 
           <div class="services-grid">
             <article class="service-card">
               <div class="service-index">01</div>
-              <h3>Desain Arsitektur</h3>
-              <p>Konsep bangunan, pengolahan fasad, tata ruang, dan pengembangan desain untuk hunian maupun komersial.</p>
+              <h3>Desain Eksterior dan Interior</h3>
+              <p>Perancangan tampilan luar dan dalam bangunan yang mencakup rumah tinggal, ruko, gedung, hingga taman agar tampil selaras, fungsional, dan berkarakter.</p>
             </article>
             <article class="service-card">
               <div class="service-index">02</div>
               <h3>Desain Interior</h3>
-              <p>Penataan ruang dalam, suasana material, pencahayaan, dan komposisi visual yang lebih rapi dan hidup.</p>
+              <p>Perancangan interior untuk berbagai jenis ruang, mulai dari ruang tamu, kamar tidur, dapur, kantor, ruang rapat, hingga area komersial dengan pendekatan material, pencahayaan, dan kenyamanan ruang.</p>
             </article>
             <article class="service-card">
               <div class="service-index">03</div>
-              <h3>Gambar Kerja</h3>
-              <p>Dokumen teknis yang lebih jelas untuk kebutuhan koordinasi, pembangunan, dan kontrol pekerjaan di lapangan.</p>
-            </article>
-            <article class="service-card">
-              <div class="service-index">04</div>
-              <h3>RAB Awal & Konsultasi</h3>
-              <p>Estimasi awal dan diskusi teknis supaya keputusan desain tidak lepas dari realita biaya dan pelaksanaan.</p>
+              <h3>Gambar Kerja dan RAB</h3>
+              <p>Penyusunan gambar kerja teknis dan perhitungan RAB untuk mendukung proses pembangunan secara lebih jelas, terukur, dan mudah dipahami di lapangan.</p>
             </article>
           </div>
         </div>
@@ -672,44 +684,55 @@
           <div class="projects-grid">
             <article class="project-card">
               <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Proyek rumah modern" />
+                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Desain eksterior dan interior bangunan" />
               </div>
-              <h3>Rumah Tinggal Modern</h3>
-              <p>Contoh proyek hunian dengan fasad tegas, pencahayaan alami, dan komposisi ruang yang efisien.</p>
+              <h3>Desain Eksterior & Interior Bangunan</h3>
+              <p>
+                Contoh perancangan bangunan yang mencakup tampilan fasad, tata ruang, serta hubungan antara
+                ruang dalam dan luar agar bangunan terasa utuh dan berkarakter.
+              </p>
               <div class="project-meta">
-                <span>Hunian</span>
-                <span>Modern</span>
-                <span>2 Lantai</span>
+                <span>Rumah</span>
+                <span>Ruko</span>
+                <span>Gedung</span>
+                <span>Taman</span>
               </div>
               <a href="#contact" class="project-link">Bahas proyek serupa</a>
             </article>
 
             <article class="project-card">
               <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Proyek ruko komersial" />
+                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Desain interior ruang" />
               </div>
-              <h3>Ruko & Bangunan Usaha</h3>
-              <p>Desain komersial yang menyeimbangkan tampilan depan, efisiensi ruang, dan potensi fungsi usaha.</p>
+              <h3>Desain Interior Berbagai Ruang</h3>
+              <p>
+                Penataan interior untuk berbagai jenis ruang seperti ruang tamu, kamar tidur, dapur,
+                kantor, hingga ruang komersial dengan pendekatan material, pencahayaan, dan kenyamanan.
+              </p>
               <div class="project-meta">
+                <span>Interior</span>
+                <span>Hunian</span>
+                <span>Kantor</span>
                 <span>Komersial</span>
-                <span>Fasad</span>
-                <span>Efisien</span>
               </div>
-              <a href="#contact" class="project-link">Lihat kebutuhanmu</a>
+              <a href="#contact" class="project-link">Diskusikan kebutuhanmu</a>
             </article>
 
             <article class="project-card">
               <div class="project-image">
-                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Proyek interior ruang" />
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Gambar kerja dan RAB proyek" />
               </div>
-              <h3>Interior Ruang Tinggal</h3>
-              <p>Penataan ruang yang lebih tenang, bersih, dan nyaman tanpa kehilangan identitas visual pemiliknya.</p>
+              <h3>Gambar Kerja & RAB Proyek</h3>
+              <p>
+                Penyusunan gambar kerja teknis serta estimasi biaya pembangunan yang membantu proyek
+                lebih jelas saat masuk tahap pelaksanaan di lapangan.
+              </p>
               <div class="project-meta">
-                <span>Interior</span>
-                <span>Warm</span>
-                <span>Functional</span>
+                <span>Gambar Kerja</span>
+                <span>Detail Teknis</span>
+                <span>RAB</span>
               </div>
-              <a href="#contact" class="project-link">Konsultasi interior</a>
+              <a href="#contact" class="project-link">Konsultasi proyek</a>
             </article>
           </div>
         </div>
