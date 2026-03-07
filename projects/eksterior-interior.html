@@ -1,144 +1,700 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desain Eksterior & Interior | Imaginary Desain</title>
+    <meta
+      name="description"
+      content="Halaman detail proyek desain eksterior dan interior bangunan oleh Imaginary Desain."
+    />
+    <link rel="icon" type="image/png" href="../assets/images/logo/logo-Imaginary desain 2.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f1e8;
+        --surface: #fbf8f2;
+        --text: #171717;
+        --muted: #5f5a52;
+        --line: rgba(23, 23, 23, 0.12);
+        --accent: #8f6a2a;
+        --accent-dark: #6f511f;
+        --white: #ffffff;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        --radius: 22px;
+        --container: 1180px;
+      }
 
-<title>Desain Eksterior & Interior | Imaginary Desain</title>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-<link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+      html {
+        scroll-behavior: smooth;
+      }
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.65;
+      }
 
-<style>
+      img {
+        max-width: 100%;
+        display: block;
+      }
 
-body{
-font-family: "Inter", sans-serif;
-background:#f5f1e8;
-margin:0;
-color:#171717;
-}
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-}
+      .container {
+        width: min(var(--container), calc(100% - 32px));
+        margin: 0 auto;
+      }
 
-h1{
-font-family:"DM Serif Display", serif;
-font-size:48px;
-margin-bottom:10px;
-}
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(10px);
+        background: rgba(245, 241, 232, 0.82);
+        border-bottom: 1px solid transparent;
+        transition: 0.3s ease;
+      }
 
-p{
-color:#5f5a52;
-line-height:1.7;
-}
+      .site-header.scrolled {
+        border-color: var(--line);
+      }
 
-.hero-image{
-margin-top:30px;
-border-radius:18px;
-overflow:hidden;
-}
+      .nav {
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
 
-.hero-image img{
-width:100%;
-display:block;
-}
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-margin-top:30px;
-}
+      .brand-logo {
+        height: 60px;
+        width: auto;
+        display: block;
+      }
 
-.gallery img{
-width:100%;
-border-radius:14px;
-}
+      .brand-text strong {
+        display: block;
+        font-size: 0.98rem;
+      }
 
-.project-info{
-margin-top:40px;
-max-width:700px;
-}
+      .brand-text span {
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
 
-.button{
-display:inline-block;
-margin-top:30px;
-padding:12px 22px;
-border-radius:999px;
-border:1px solid #171717;
-text-decoration:none;
-color:#171717;
-font-weight:600;
-}
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
 
-.button:hover{
-background:#171717;
-color:white;
-}
+      .nav-links a {
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
 
-.back{
-margin-top:50px;
-display:block;
-color:#5f5a52;
-}
+      .nav-cta,
+      .primary-btn,
+      .secondary-btn,
+      .gallery-card {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 999px;
+        padding: 12px 20px;
+        font-weight: 600;
+        transition: 0.25s ease;
+      }
 
-</style>
+      .nav-cta,
+      .primary-btn {
+        background: var(--text);
+        color: var(--white);
+      }
 
-</head>
+      .secondary-btn {
+        border: 1px solid var(--line);
+        background: transparent;
+      }
 
-<body>
+      .nav-cta:hover,
+      .primary-btn:hover {
+        background: var(--accent-dark);
+      }
 
-<div class="container">
+      .menu-button {
+        display: none;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        border-radius: 14px;
+        padding: 10px 14px;
+        font: inherit;
+      }
 
-<h1>Desain Eksterior & Interior Bangunan</h1>
+      .hero {
+        padding: 44px 0 20px;
+      }
 
-<p>
-Proyek ini menampilkan pendekatan desain yang menggabungkan tampilan fasad,
-tata ruang interior, serta hubungan ruang luar dan dalam agar bangunan
-terasa utuh, fungsional, dan memiliki karakter yang jelas.
-</p>
+      .hero-wrap,
+      .section-block,
+      .cta-block {
+        background: var(--surface);
+        border: 1px solid rgba(23, 23, 23, 0.08);
+        border-radius: calc(var(--radius) + 6px);
+        box-shadow: var(--shadow);
+      }
 
-<div class="hero-image">
-<img src="../assets/images/projects/rumah01.jpg">
-</div>
+      .hero-wrap {
+        overflow: hidden;
+      }
 
-<div class="gallery">
+      .hero-image {
+        position: relative;
+        min-height: 620px;
+      }
 
-<img src="../assets/images/projects/rumah02.jpg">
-<img src="../assets/images/projects/rumah03.jpg">
-<img src="../assets/images/projects/rumah04.jpg">
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-</div>
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.08));
+        display: flex;
+        align-items: end;
+      }
 
-<div class="project-info">
+      .hero-copy {
+        width: 100%;
+        padding: 34px;
+        color: var(--white);
+      }
 
-<h2>Konsep Desain</h2>
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--white);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 18px;
+        backdrop-filter: blur(8px);
+      }
 
-<p>
-Pendekatan desain berfokus pada kesederhanaan bentuk, komposisi fasad
-yang tegas, serta pengolahan ruang yang efisien agar rumah tetap nyaman
-digunakan sehari-hari tanpa kehilangan nilai estetika.
-</p>
+      h1,
+      h2,
+      h3 {
+        font-family: "DM Serif Display", serif;
+        font-weight: 400;
+        line-height: 1.08;
+      }
 
-<p>
-Material dipilih untuk menciptakan tampilan yang bersih dan modern,
-sementara tata ruang diatur agar aliran sirkulasi tetap jelas dan
-mudah digunakan oleh penghuni.
-</p>
+      h1 {
+        font-size: clamp(2.8rem, 5vw, 4.8rem);
+        letter-spacing: -0.03em;
+        max-width: 820px;
+        margin-bottom: 14px;
+      }
 
-<a class="button" href="https://wa.me/6281233406743">
-Diskusikan Proyek Serupa
-</a>
+      .hero-copy p {
+        max-width: 720px;
+        font-size: 1.04rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
 
-</div>
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
 
-<a class="back" href="../index.html">← Kembali ke Homepage</a>
+      .hero-actions .secondary-btn {
+        border-color: rgba(255, 255, 255, 0.35);
+        color: var(--white);
+      }
 
-</div>
+      .hero-actions .secondary-btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
 
-</body>
+      section {
+        padding: 22px 0;
+      }
+
+      .section-block {
+        padding: 34px;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+      }
+
+      .summary-copy p,
+      .summary-card p,
+      .process-step p,
+      .cta-block p {
+        color: var(--muted);
+      }
+
+      .summary-copy h2,
+      .gallery-head h2,
+      .process-head h2,
+      .cta-block h2 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        margin-bottom: 14px;
+      }
+
+      .summary-copy {
+        display: grid;
+        gap: 14px;
+      }
+
+      .summary-card {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.55);
+        padding: 24px;
+        display: grid;
+        gap: 16px;
+        align-content: start;
+      }
+
+      .meta-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .meta-item {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px 16px;
+        background: rgba(255,255,255,0.6);
+      }
+
+      .meta-item strong {
+        display: block;
+        font-size: 0.78rem;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+
+      .meta-item span {
+        font-size: 1.05rem;
+        font-weight: 600;
+      }
+
+      .meta-item strong {
+        display: block;
+        font-size: 0.88rem;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+
+      .meta-item span {
+        font-size: 1rem;
+      }
+
+      .gallery-head,
+      .process-head {
+        margin-bottom: 20px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 16px;
+      }
+
+      .gallery-col {
+        display: grid;
+        gap: 16px;
+      }
+
+      .gallery-card {
+        display: block;
+        padding: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(23, 23, 23, 0.08);
+        background: rgba(255, 255, 255, 0.55);
+        box-shadow: var(--shadow);
+      }
+
+      .gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+      }
+
+      .gallery-card:hover img {
+        transform: scale(1.04);
+      }
+
+      .gallery-card.tall {
+        min-height: 560px;
+      }
+
+      .gallery-card.medium {
+        min-height: 272px;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .process-step {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.55);
+        padding: 24px;
+      }
+
+      .step-index {
+        display: inline-flex;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(143, 106, 42, 0.1);
+        color: var(--accent-dark);
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .process-step h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+
+      .cta-block {
+        padding: 34px;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: end;
+      }
+
+      .cta-copy {
+        max-width: 720px;
+      }
+
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .footer {
+        padding: 28px 0 54px;
+      }
+
+      .footer-box {
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      @media (max-width: 1024px) {
+        .summary-grid,
+        .gallery-grid,
+        .process-grid,
+        .cta-block {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-image {
+          min-height: 480px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .menu-button {
+          display: inline-flex;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 86px;
+          left: 16px;
+          right: 16px;
+          padding: 18px;
+          border-radius: 20px;
+          background: rgba(251, 248, 242, 0.98);
+          border: 1px solid var(--line);
+          box-shadow: var(--shadow);
+          flex-direction: column;
+          align-items: flex-start;
+          display: none;
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .section-block,
+        .cta-block,
+        .hero-copy {
+          padding: 24px;
+        }
+
+        .footer-box {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" id="siteHeader">
+      <div class="container nav">
+        <a href="../index.html#home" class="brand">
+          <img src="../assets/images/logo/logo-Imaginary desain 2.png" class="brand-logo" alt="Logo Imaginary Desain" />
+          <div class="brand-text">
+            <strong>Imaginary Desain</strong>
+            <span>Architecture & Design</span>
+          </div>
+        </a>
+
+        <button class="menu-button" id="menuButton">Menu</button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="../index.html#about">Tentang</a>
+          <a href="../index.html#services">Layanan</a>
+          <a href="../index.html#projects">Proyek</a>
+          <a href="../index.html#contact">Kontak</a>
+          <a href="https://wa.me/6281233406743" target="_blank" rel="noreferrer" class="nav-cta">WhatsApp</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container" style="margin-top:18px;margin-bottom:6px;font-size:.9rem;color:var(--muted);">
+        <a href="../index.html">Home</a> / <a href="../index.html#projects">Proyek</a> / <span>Eksterior & Interior</span>
+      </div>
+      <section class="hero">
+        <div class="container hero-wrap">
+          <div class="hero-image">
+            <img src="../assets/images/projects/rumah-modern-01.jpg" alt="Desain eksterior dan interior bangunan karya Imaginary Desain" />
+            <div class="hero-overlay">
+              <div class="hero-copy">
+                <span class="eyebrow">Detail Proyek</span>
+                <h1>Desain Eksterior & Interior Bangunan</h1>
+                <p>
+                  Pendekatan desain yang menyatukan fasad, suasana ruang dalam, serta hubungan ruang luar dan dalam
+                  agar bangunan terasa utuh, fungsional, dan tetap punya karakter visual yang kuat.
+                </p>
+                <div class="hero-actions">
+                  <a class="primary-btn" href="https://wa.me/6281233406743" target="_blank" rel="noreferrer">Diskusikan Proyek Serupa</a>
+                  <a class="secondary-btn" href="#galeri">Lihat Galeri</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container section-block">
+          <div class="summary-grid">
+            <div class="summary-copy">
+              <h2>Ruang luar dan dalam harus saling nyambung.</h2>
+              <p>
+                Pada proyek seperti ini, desain tidak berhenti di tampilan fasad saja. Komposisi bentuk bangunan,
+                masuknya cahaya, tata ruang, dan suasana interior harus mendukung satu sama lain agar hasil akhirnya
+                terasa rapi dan masuk akal saat dibangun.
+              </p>
+              <p>
+                Fokus perancangan diarahkan pada karakter bangunan yang tegas, alur sirkulasi yang jelas,
+                serta keseimbangan antara estetika visual dan kebutuhan fungsional penghuni maupun pengguna ruang.
+              </p>
+            </div>
+
+            <aside class="summary-card">
+              <div class="meta-row">
+                <div class="meta-item">
+                  <strong>Jenis Bangunan</strong>
+                  <span>Rumah Tinggal</span>
+                </div>
+
+                <div class="meta-item">
+                  <strong>Luas Tanah</strong>
+                  <span>120 m²</span>
+                </div>
+
+                <div class="meta-item">
+                  <strong>Luas Bangunan</strong>
+                  <span>85 m²</span>
+                </div>
+
+                <div class="meta-item">
+                  <strong>Kamar Tidur</strong>
+                  <span>3 kamar</span>
+                </div>
+
+                <div class="meta-item">
+                  <strong>Kamar Mandi</strong>
+                  <span>2 kamar</span>
+                </div>
+
+                <div class="meta-item">
+                  <strong>Lantai</strong>
+                  <span>1 lantai</span>
+                </div>
+
+                <div class="meta-item">
+                  <strong>Layanan</strong>
+                  <span>Desain eksterior, interior, dan konsep tata ruang</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeri">
+        <div class="container section-block">
+          <div class="gallery-head">
+            <h2>Galeri Proyek</h2>
+            <p>Ganti seluruh gambar ini dengan render atau foto proyek asli milikmu. Nama file tinggal kamu sesuaikan dengan folder yang ada di repo.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <a class="gallery-card tall" href="../assets/images/projects/eksterior-interior-1.jpg" target="_blank" rel="noreferrer">
+              <img src="../assets/images/projects/eksterior-interior-1.jpg" alt="Tampilan utama proyek eksterior dan interior" />
+            </a>
+
+            <div class="gallery-col">
+              <a class="gallery-card medium" href="../assets/images/projects/eksterior-interior-2.jpg" target="_blank" rel="noreferrer">
+                <img src="../assets/images/projects/eksterior-interior-2.jpg" alt="Sudut proyek eksterior dan interior" />
+              </a>
+              <a class="gallery-card medium" href="../assets/images/projects/eksterior-interior-3.jpg" target="_blank" rel="noreferrer">
+                <img src="../assets/images/projects/eksterior-interior-3.jpg" alt="Detail ruang proyek eksterior dan interior" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container section-block">
+          <div class="process-head">
+            <h2>Arah pendekatan desain</h2>
+            <p>Bagian ini membuat halaman proyek terasa lebih serius karena tidak hanya menampilkan gambar, tapi juga cara berpikir desainnya.</p>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-step">
+              <div class="step-index">01</div>
+              <h3>Karakter Bangunan</h3>
+              <p>
+                Menentukan bahasa bentuk, ritme fasad, dan proporsi visual agar bangunan memiliki identitas yang jelas sejak tampilan pertama.
+              </p>
+            </article>
+
+            <article class="process-step">
+              <div class="step-index">02</div>
+              <h3>Tata Ruang</h3>
+              <p>
+                Mengatur hubungan antar ruang, sirkulasi, pencahayaan, dan kenyamanan penggunaan agar desain tidak hanya bagus di visual.
+              </p>
+            </article>
+
+            <article class="process-step">
+              <div class="step-index">03</div>
+              <h3>Kesiapan Dibangun</h3>
+              <p>
+                Menjaga agar keputusan desain tetap realistis terhadap kebutuhan proyek, proses pelaksanaan, serta arah pengembangan berikutnya.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container cta-block">
+          <div class="cta-copy">
+            <h2>Tertarik dengan pendekatan desain seperti ini?</h2>
+            <p>
+              Kalau kamu punya rencana rumah, ruko, bangunan usaha, atau proyek lain yang ingin dibahas,
+              kita bisa mulai dari kebutuhan ruang, karakter desain, dan kisaran pekerjaan yang kamu inginkan.
+            </p>
+          </div>
+
+          <div class="cta-actions">
+            <a class="primary-btn" href="https://wa.me/6281233406743" target="_blank" rel="noreferrer">Chat WhatsApp</a>
+            <a class="secondary-btn" href="../index.html#projects">Kembali ke Proyek</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-box">
+        <div>© 2026 Imaginary Desain. All rights reserved.</div>
+        <div>Architecture • Interior • Working Drawing • Consultation</div>
+      </div>
+    </footer>
+
+    <script>
+      const header = document.getElementById("siteHeader");
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("scrolled", window.scrollY > 8);
+      });
+
+      menuButton.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => navLinks.classList.remove("open"));
+      });
+    </script>
+  </body>
 </html>
